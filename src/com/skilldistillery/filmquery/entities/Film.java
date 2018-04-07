@@ -12,13 +12,17 @@ public class Film {
 	private double rentalRate;
 	private int length;
 	private double replacementCost;
-	private String ENUM;
+	private String rating;
 	private String specialFeatures;
 	private List <Actor> cast;
 	
 	
+	
+
+
 	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String eNUM, String specialFeatures) {
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
+			List<Actor> cast) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -29,8 +33,9 @@ public class Film {
 		this.rentalRate = rentalRate;
 		this.length = length;
 		this.replacementCost = replacementCost;
-		ENUM = eNUM;
+		this.rating = rating;
 		this.specialFeatures = specialFeatures;
+		this.cast = cast;
 	}
 
 
@@ -38,7 +43,8 @@ public class Film {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ENUM == null) ? 0 : ENUM.hashCode());
+		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
+		result = prime * result + ((cast == null) ? 0 : cast.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + languageId;
@@ -65,10 +71,15 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
-		if (ENUM == null) {
-			if (other.ENUM != null)
+		if (rating == null) {
+			if (other.rating != null)
 				return false;
-		} else if (!ENUM.equals(other.ENUM))
+		} else if (!rating.equals(other.rating))
+			return false;
+		if (cast == null) {
+			if (other.cast != null)
+				return false;
+		} else if (!cast.equals(other.cast))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -148,6 +159,25 @@ public class Film {
 	}
 
 
+	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures
+			)
+			 {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.languageId = languageId;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+	}
+
+
 	public void setLanguageId(int languageId) {
 		this.languageId = languageId;
 	}
@@ -193,15 +223,6 @@ public class Film {
 	}
 
 
-	public String getENUM() {
-		return ENUM;
-	}
-
-
-	public void setENUM(String eNUM) {
-		ENUM = eNUM;
-	}
-
 
 	public String getSpecialFeatures() {
 		return specialFeatures;
@@ -215,12 +236,33 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film id = " + id + ", title = " + title + ", description = " + description + ", releaseYear = " + releaseYear
-				+ ", languageId = " + languageId + ", rentalDuration = " + rentalDuration + ", rentalRate = " + rentalRate
-				+ ", length = " + length + ", replacementCost = " + replacementCost + ", ENUM = " + ENUM
-				+ ", specialFeatures = " + specialFeatures;
+		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
+				+ ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
+				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
+				+ ", specialFeatures=" + specialFeatures + ", cast=" + cast ;
 	}
-	
+
+
+	public List<Actor> getCast() {
+		return cast;
+	}
+
+
+	public void setCast(List<Actor> cast) {
+		this.cast = cast;
+	}
+
+
+	public String getRating() {
+		return rating;
+	}
+
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+
 	
 	
 }
