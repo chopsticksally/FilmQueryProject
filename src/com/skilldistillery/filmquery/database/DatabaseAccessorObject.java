@@ -162,7 +162,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setInt(1, languageId);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				
+
 				String name = rs.getString(1);
 				language = new Language(name);
 
