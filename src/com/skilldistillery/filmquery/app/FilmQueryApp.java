@@ -48,6 +48,8 @@ public class FilmQueryApp {
 				}
 				displayFilmInfo(film);
 				System.out.println("");
+				displaySubMenu(input, film);
+
 				break;
 
 			case 2:
@@ -62,7 +64,9 @@ public class FilmQueryApp {
 
 					displayFilmInfo(film1);
 					System.out.println("");
-
+					if (displaySubMenu(input, film1)) {
+						break;
+					}
 				}
 				break;
 
@@ -85,6 +89,38 @@ public class FilmQueryApp {
 		System.out.println("Cast:");
 		for (Actor actor : cast) {
 			System.out.println(actor.getFirstName() + " " + actor.getLastName());
+
+		}
+	}
+
+	public boolean displaySubMenu(Scanner input, Film film) {
+		System.out.println("Enter 1 to see more infortmation about this film:");
+		System.out.println("Enter 2 to return to the main menu: ");
+		int menu = input.nextInt();
+		switch (menu) {
+		case 1:
+			System.out.println("Film title: " + film.getTitle());
+			System.out.println("Year film released: " + film.getReleaseYear());
+			System.out.println("Film rating: " + film.getRating());
+			System.out.println("Description: " + film.getDescription());
+			System.out.println(db.getFilmsLanguage(film.getLanguageId()));
+			List<Actor> cast = film.getCast();
+			System.out.println("Cast:");
+			for (Actor actor : cast) {
+				System.out.println(actor.getFirstName() + " " + actor.getLastName());
+			}
+			System.out.println("Rental duration: " + film.getRentalDuration());
+			System.out.println("Rental rate: " + film.getRentalRate());
+			System.out.println("Film length: " + film.getLength());
+			System.out.println("Replacement cost: " + film.getReplacementCost());
+			System.out.println("Special features: " + film.getSpecialFeatures());
+			System.out.println("");
+			return false;
+		case 2:
+			return true;
+
+		default:
+			return false;
 
 		}
 

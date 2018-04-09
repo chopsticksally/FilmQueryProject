@@ -17,4 +17,6 @@ public interface DatabaseAccessor {
 	
 	public Language getFilmsLanguage(int languageId);
 	
+	//public Film getAllFilmInfo( int filmId);
+	
 }
